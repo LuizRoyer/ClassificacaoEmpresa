@@ -1,0 +1,42 @@
+<form>
+    <div class="col-sm-9" style="text-align: center;">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="col-md-7" style="top: 10px;">
+
+        <label class="col-sm-1 col-form-label">Empresa:</label>
+        <select id="inputState" class="form-control" [(ngModel)]="empresa.idEmpresa" name="idempresa">
+            <option *ngFor="let emp of listaEmpresas" value={{emp.idEmpresa}}>
+                {{emp.nome}}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-5" style="top: 15px;">
+
+        <label class="col-form-label ">Tipo Nota :</label>
+        <div class="form-check form-check-inline" style="margin-left:10px;">
+            <input class="form-check-input" type="radio" name="tipo" id="notaFiscal" value="1"
+                [(ngModel)]="empresa.tipoNota" checked>
+            <label class="form-check-label" for="notaFiscal"> Fiscais</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="tipo" id="notaDebito" value="2"
+                [(ngModel)]="empresa.tipoNota">
+            <label class="form-check-label" for="notaDebito"> Débito</label>
+        </div>
+    </div>
+
+    <div class="col-md-7" style="margin-top:30px;">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile" (change)="onChange($event)" multiple>
+            <label class="custom-file-label" for="customFileLangHTML" data-browse="Procurar"
+                id="customFileLabel">Selecionar Notas</label>
+        </div>
+    </div>
+
+    <div>
+        <button style="margin-top: 10px; margin-left:15px;" (click)="enviar(empresa)"
+            class="btn btn-primary mr-2">Enviar</button>
+    </div>
+
+</form>
